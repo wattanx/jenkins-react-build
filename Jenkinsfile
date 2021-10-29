@@ -1,11 +1,21 @@
 pipeline {
     agent any
+    
+    tools { nodejs "node" }
     stages {
+        
+        stage('Install') {
+            steps {
+                dir ("${env.WORKSPACE}/src") {
+                  sh 'npm install'
+                }
+            }
+        }
+        
         stage('Build') {
             steps {
-                dir (./src) {
-                  echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                  sh 'npm install'
+                dir ("${env.WORKSPACE}/src") {
+                  sh 'npm run build'
                 }
             }
         }
