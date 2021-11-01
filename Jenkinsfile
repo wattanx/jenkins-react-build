@@ -11,6 +11,14 @@ pipeline {
                 }
             }
         }
+
+        stage('Test') {
+            steps {
+                dir ("${env.WORKSPACE}/src") {
+                  sh 'CI=true npm run test'
+                }
+            }
+        }
         
         stage('Build') {
             steps {
