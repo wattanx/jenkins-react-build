@@ -23,7 +23,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir ("${env.WORKSPACE}/src") {
-                  sh 'npm run build'
+                  sh 'CI=true npm run build'
                 }
             }
         }
