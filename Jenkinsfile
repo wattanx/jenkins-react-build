@@ -7,6 +7,7 @@ pipeline {
         stage('Install') {
             steps {
                 dir ("${env.WORKSPACE}/src") {
+                  sh 'npm -v'
                   sh 'npm install'
                 }
             }
